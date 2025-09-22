@@ -2,133 +2,120 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>АДАПТЕР ДМИТРИЯ СТВОЛОВА</title>
+    <title>АДАПТЕР | Дмитрий Стволов</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background: #0f051d;
+            color: #e0d0ff;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
         }
-
-        body {
-            background: #000;
-            color: #00ff41;
-            font-family: 'Courier New', monospace;
-            line-height: 1.4;
-            padding: 20px;
-            min-height: 100vh;
-        }
-
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
-            border: 1px solid #00ff41;
-            padding: 30px;
-            position: relative;
+            padding: 20px;
         }
-
-        h1 {
+        header {
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            padding: 50px 0;
+            border-bottom: 1px solid #8b00ff;
         }
-
-        .link-grid {
+        h1 {
+            color: #8b00ff;
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        .nav a {
+            color: #a866ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #8b00ff;
+            border-radius: 5px;
+        }
+        .content {
+            padding: 50px 0;
+        }
+        .links-grid {
             display: grid;
             gap: 15px;
             margin: 30px 0;
         }
-
         .link-card {
-            background: rgba(0, 255, 65, 0.05);
-            border: 1px solid #00ff41;
+            background: rgba(139, 0, 255, 0.1);
+            border: 1px solid #8b00ff;
             padding: 20px;
+            border-radius: 5px;
+        }
+        .link-card a {
+            color: #b98aff;
             text-decoration: none;
-            color: #00ff41;
-            transition: all 0.3s;
+            font-weight: bold;
         }
-
-        .link-card:hover {
-            background: #00ff41;
-            color: #000;
-        }
-
-        .info-block {
-            margin: 20px 0;
-            padding: 15px;
-            border-left: 3px solid #00ff41;
-        }
-
         .stats {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 0.9em;
+            color: #a866ff;
             margin-top: 5px;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>АДАПТЕР ДМИТРИЯ СТВОЛОВА</h1>
+        <header>
+            <h1>АДАПТЕР</h1>
+            <p>Дмитрий Стволов | Официальный портал</p>
+        </header>
 
-        <div class="info-block">
-            <p>⚡ Официальный переходник проекта «Месиво КМ»</p>
-        </div>
+        <nav class="nav">
+            <a href="#about">О проекте</a>
+            <a href="#links">Ссылки</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
 
-        <div class="link-grid">
-            <a href="https://t.me/+-UNRwIdYYhM5NjQy" target="_blank" class="link-card">
-                <strong>[🖥] Ссылка на канал</strong>
-                <div class="stats">👥 50 подписчиков</div>
-            </a>
-            
-            <a href="https://t.me/+XZC7HWNPqRxjYTgy" target="_blank" class="link-card">
-                <strong>[✉️] Ссылка на обсуждение</strong>
-                <div class="stats">👥 40 участников</div>
-            </a>
-            
-            <a href="https://t.me/boost?c=2609564382" target="_blank" class="link-card">
-                <strong>[📊] Ссылка на буст канала</strong>
-                <div class="stats">⭐ Уровень: 0</div>
-            </a>
-        </div>
+        <div class="content">
+            <section id="about">
+                <h2>О проекте</h2>
+                <p>⚡ Официальный переходник проекта «Месиво КМ». Все остальные — фейки.</p>
+            </section>
 
-        <div class="info-block">
-            <p>🚫 <strong>Не подписывайтесь на переходник</strong>, подписывайтесь на сам канал по ссылке выше! 🔼</p>
-        </div>
+            <section id="links">
+                <h2>Ссылки</h2>
+                <div class="links-grid">
+                    <div class="link-card">
+                        <a href="https://t.me/+-UNRwIdYYhM5NjQy" target="_blank">[🖥] Ссылка на канал</a>
+                        <div class="stats">👥 50 подписчиков</div>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://t.me/+XZC7HWNPqRxjYTgy" target="_blank">[✉️] Ссылка на обсуждение</a>
+                        <div class="stats">👥 40 участников</div>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://t.me/boost?c=2609564382" target="_blank">[📊] Ссылка на буст канала</a>
+                        <div class="stats">⭐ Уровень: 0</div>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://t.me/+S70CEvn7DGRjZTky" target="_blank">[💰] Мой новый прайс</a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://t.me/+aV8LEhaVh-tmNzY0" target="_blank">[🎯] Дополнительный канал</a>
+                    </div>
+                </div>
+            </section>
 
-        <div class="info-block">
-            <p>👤 <strong>Владелец проекта</strong> — @userfratov</p>
-            <p>По всем вопросам – к нему. Хорошего дня! Оставайтесь белыми и чистыми с нами! 🛡</p>
-        </div>
-
-        <div class="info-block">
-            <p>💼 <strong>Сменил нейм с фратов на дмитрий стволов</strong>, будьте внимательнее</p>
-        </div>
-
-        <a href="https://t.me/+S70CEvn7DGRjZTky" target="_blank" class="link-card">
-            <strong>[💰] Мой новый прайс</strong>
-            <p>Актуальные цены на услуги</p>
-        </a>
-
-        <div class="info-block">
-            <p>🎯 <strong>Теперь я админ еще одного тгк, а именно:</strong></p>
-            <a href="https://t.me/+aV8LEhaVh-tmNzY0" target="_blank" class="link-card">
-                <strong>[🔗] Новый телеграм-канал</strong>
-                <p>Буду постить контент теперь и там</p>
-            </a>
+            <section id="contacts">
+                <h2>Контакты</h2>
+                <p>Владелец проекта: @userfratov</p>
+                <p>По всем вопросам обращаться в обсуждение</p>
+            </section>
         </div>
     </div>
 </body>
-</html> 
+                            </html>
