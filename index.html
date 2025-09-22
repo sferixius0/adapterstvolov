@@ -2,369 +2,180 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>АДАПТЕР ДМИТРИЯ СТВОЛОВА | ОФИЦИАЛЬНЫЙ ПОРТАЛ</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ПАНЕЛЬ УПРАВЛЕНИЯ АДАПТЕРОМ | СУПЕР-ИНТЕРФЕЙС</title>
     <style>
-        :root {
-            --neon-green: #00ff41;
-            --neon-blue: #0066ff;
-            --neon-pink: #ff00ff;
-            --neon-cyan: #00ffff;
-            --dark-bg: #0a0a0a;
-            --darker-bg: #000;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* ОСНОВА */
         body {
-            background: var(--darker-bg);
-            color: var(--neon-green);
-            font-family: 'Courier New', 'Orbitron', monospace;
-            overflow-x: hidden;
-            line-height: 1.6;
+            margin: 0;
+            background: #000;
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
         }
 
-        /* === МАСШТАБИРУЕМЫЙ ФОН === */
-        .universe-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 400%;
-            height: 400%;
+        /* КОСМИЧЕСКАЯ ПАНЕЛЬ */
+        .control-panel {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+            gap: 15px;
+            padding: 30px;
+            height: 100vh;
             background: 
-                radial-gradient(circle at 10% 20%, rgba(0, 255, 65, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 90% 80%, rgba(0, 102, 255, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(255, 0, 255, 0.02) 0%, transparent 70%),
-                repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(0, 255, 65, 0.01) 100px, rgba(0, 255, 65, 0.01) 101px);
-            animation: universeMove 60s linear infinite;
-            z-index: -3;
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 65, 0.03) 2px, rgba(0, 255, 65, 0.03) 4px);
         }
 
-        @keyframes universeMove {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        /* === ГЛАВНЫЙ КОНТЕЙНЕР === */
-        .mega-container {
-            max-width: 2000px;
-            margin: 0 auto;
-            padding: 50px;
-            position: relative;
-        }
-
-        /* === СЕКЦИИ-ГАЛАКТИКИ === */
-        .galaxy-section {
-            background: rgba(10, 10, 10, 0.95);
-            border: 3px solid var(--neon-green);
-            border-radius: 25px;
-            margin: 100px 0;
-            padding: 60px;
+        /* СТИЛИ КНОПОК */
+        .cyber-btn {
+            background: linear-gradient(145deg, #001a00, #000);
+            border: 2px solid #00ff41;
+            border-radius: 8px;
+            color: #00ff41;
+            padding: 15px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
             position: relative;
             overflow: hidden;
-            box-shadow: 
-                0 0 100px rgba(0, 255, 65, 0.3),
-                inset 0 0 100px rgba(0, 255, 65, 0.1);
-            animation: galaxyPulse 8s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
         }
 
-        @keyframes galaxyPulse {
-            0%, 100% { 
-                box-shadow: 
-                    0 0 100px rgba(0, 255, 65, 0.3),
-                    inset 0 0 100px rgba(0, 255, 65, 0.1);
-                transform: scale(1);
-            }
-            50% { 
-                box-shadow: 
-                    0 0 200px rgba(0, 255, 65, 0.6),
-                    inset 0 0 150px rgba(0, 255, 65, 0.2);
-                transform: scale(1.005);
-            }
+        .cyber-btn:hover {
+            background: #00ff41;
+            color: #000;
+            transform: scale(1.1);
+            box-shadow: 0 0 30px #00ff41;
+            animation: btnPulse 0.5s infinite;
         }
 
-        /* === МЕГА-ЗАГОЛОВОК === */
-        .giga-title {
-            font-size: 8rem;
-            text-align: center;
-            text-transform: uppercase;
-            font-weight: 900;
-            letter-spacing: 1rem;
-            margin-bottom: 100px;
-            position: relative;
-            animation: gigaGlitch 5s infinite;
-            text-shadow: 
-                0 0 20px var(--neon-green),
-                0 0 40px var(--neon-green),
-                0 0 80px var(--neon-green),
-                0 0 160px var(--neon-green);
+        @keyframes btnPulse {
+            0%, 100% { box-shadow: 0 0 30px #00ff41; }
+            50% { box-shadow: 0 0 50px #00ff41, 0 0 70px #00ff41; }
         }
 
-        @keyframes gigaGlitch {
-            0%, 100% { 
-                transform: translateX(0) skewX(0);
-                text-shadow: 
-                    0 0 20px var(--neon-green),
-                    0 0 40px var(--neon-green),
-                    0 0 80px var(--neon-green);
-            }
-            15% { 
-                transform: translateX(-30px) skewX(-10deg);
-                text-shadow: 
-                    0 0 20px var(--neon-pink),
-                    0 0 40px var(--neon-pink),
-                    0 0 80px var(--neon-pink);
-            }
-            30% { 
-                transform: translateX(30px) skewX(10deg);
-                text-shadow: 
-                    0 0 20px var(--neon-cyan),
-                    0 0 40px var(--neon-cyan),
-                    0 0 80px var(--neon-cyan);
-            }
+        /* ОСОБЫЕ КНОПКИ */
+        .btn-large {
+            grid-column: span 2;
+            grid-row: span 2;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
 
-        /* === ГИПЕР-СЕТКА ССЫЛОК === */
-        .hyper-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 40px;
-            margin: 80px 0;
+        .btn-danger {
+            border-color: #ff0066;
+            box-shadow: 0 0 15px rgba(255, 0, 102, 0.5);
         }
 
-        .hyper-card {
-            background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 102, 255, 0.1));
-            border: 2px solid var(--neon-green);
-            border-radius: 20px;
-            padding: 40px;
-            text-decoration: none;
-            color: var(--neon-green);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            animation: cardOrbit 20s linear infinite;
+        .btn-danger:hover {
+            background: #ff0066;
+            box-shadow: 0 0 40px #ff0066;
         }
 
-        @keyframes cardOrbit {
-            0% { transform: rotateY(0deg) scale(1); }
-            50% { transform: rotateY(180deg) scale(1.05); }
-            100% { transform: rotateY(360deg) scale(1); }
+        /* ИНФО-ПАНЕЛИ */
+        .display-panel {
+            grid-column: span 4;
+            grid-row: span 3;
+            border: 3px solid #00ff41;
+            padding: 20px;
+            background: rgba(0, 20, 0, 0.8);
+            overflow-y: auto;
         }
 
-        .hyper-card:hover {
-            background: var(--neon-green);
-            color: var(--darker-bg);
-            transform: scale(1.1) rotate(5deg);
-            animation: none;
-            box-shadow: 
-                0 0 50px var(--neon-green),
-                0 0 100px var(--neon-green);
+        /* АНИМАЦИЯ ТЕКСТА */
+        .matrix-text {
+            animation: textScroll 10s linear infinite;
         }
 
-        /* === МАССИВНЫЕ ИНФО-БЛОКИ === */
-        .info-tower {
-            background: rgba(0, 0, 0, 0.8);
-            border-left: 10px solid var(--neon-green);
-            padding: 50px;
-            margin: 60px 0;
-            position: relative;
-            animation: towerRise 2s ease-out;
-        }
-
-        @keyframes towerRise {
-            from { 
-                transform: translateY(100px) rotateX(90deg);
-                opacity: 0;
-            }
-            to { 
-                transform: translateY(0) rotateX(0);
-                opacity: 1;
-            }
-        }
-
-        /* === КОНТАКТНАЯ ВСЕЛЕННАЯ === */
-        .contact-universe {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin: 100px 0;
-        }
-
-        .contact-black-hole {
-            background: radial-gradient(circle, rgba(0, 255, 65, 0.2), transparent);
-            border: 3px dashed var(--neon-green);
-            padding: 40px;
-            text-align: center;
-            animation: blackHoleSpin 10s linear infinite;
-        }
-
-        @keyframes blackHoleSpin {
-            from { transform: rotate(0deg) scale(1); }
-            to { transform: rotate(360deg) scale(1.1); }
-        }
-
-        /* === ГИГАНТСКИЙ ФУТЕР === */
-        .titan-footer {
-            background: linear-gradient(to top, #000, #001a00);
-            border-top: 5px solid var(--neon-green);
-            padding: 100px;
-            text-align: center;
-            margin-top: 200px;
-            position: relative;
-        }
-
-        .titan-footer::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 100px;
-            background: var(--neon-green);
-            border-radius: 50%;
-            filter: blur(40px);
-            animation: footerPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes footerPulse {
-            0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
-            50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
-        }
-
-        /* === АДАПТИВНОСТЬ ДЛЯ ГИГАНТСКИХ ЭКРАНОВ === */
-        @media (min-width: 2000px) {
-            .mega-container { max-width: 90%; }
-            .giga-title { font-size: 12rem; }
-            .hyper-grid { grid-template-columns: repeat(4, 1fr); }
-        }
-
-        @media (max-width: 768px) {
-            .mega-container { padding: 20px; }
-            .giga-title { font-size: 3rem; letter-spacing: 0.5rem; }
-            .galaxy-section { padding: 30px; margin: 50px 0; }
-            .hyper-grid { grid-template-columns: 1fr; gap: 20px; }
-            .contact-universe { grid-template-columns: 1fr; }
+        @keyframes textScroll {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(-100%); }
         }
     </style>
 </head>
 <body>
-    <div class="universe-bg"></div>
+    <div class="control-panel">
+        <!-- РЯД 1 -->
+        <button class="cyber-btn" onclick="activateSystem(1)">🎛️ СИСТЕМА ONLINE</button>
+        <button class="cyber-btn" onclick="toggleLights()">💡 ОСВЕЩЕНИЕ</button>
+        <button class="cyber-btn btn-danger" onclick="emergencyStop()">🚨 СТОП</button>
+        <button class="cyber-btn" onclick="scanNetwork()">📡 СКАН СЕТИ</button>
+        <button class="cyber-btn" onclick="encryptData()">🔒 ШИФРОВАНИЕ</button>
+        <button class="cyber-btn" onclick="deployVirus()">🦠 ВИРУС v1.0</button>
+        <button class="cyber-btn" onclick="boostSignal()">📶 БУСТ СИГНАЛА</button>
+        <button class="cyber-btn" onclick="activateAI()">🤖 ИИ АКТИВАЦИЯ</button>
+        <button class="cyber-btn" onclick="timeWarp()">⏰ ИСКАЖЕНИЕ ВРЕМЕНИ</button>
+        <button class="cyber-btn btn-danger" onclick="selfDestruct()">💥 САМОЛИКВИДАЦИЯ</button>
 
-    <div class="mega-container">
-        <!-- ЗАГЛАВНАЯ ГАЛАКТИКА -->
-        <section class="galaxy-section">
-            <h1 class="giga-title">АДАПТЕР<br>ДМИТРИЯ СТВОЛОВА</h1>
-            
-            <div class="hyper-grid">
-                <a href="https://t.me/+-UNRwIdYYhM5NjQy" target="_blank" class="hyper-card">
-                    <h2>🌌 ГЛАВНЫЙ КАНАЛ</h2>
-                    <p>Официальная точка входа в проект "Месиво КМ"</p>
-                    <div class="card-stats">📊 1000+ подписчиков</div>
-                </a>
-
-                <a href="https://t.me/+XZC7HWNPqRxjYTgy" target="_blank" class="hyper-card">
-                    <h2>💬 ОБСУЖДЕНИЕ</h2>
-                    <p>Центр коммуникации и поддержки</p>
-                    <div class="card-stats">👥 500+ участников</div>
-                </a>
-
-                <a href="https://t.me/boost?c=2609564382" target="_blank" class="hyper-card">
-                    <h2>🚀 БУСТ КАНАЛА</h2>
-                    <p>Повышение статуса и возможностей</p>
-                    <div class="card-stats">⭐ Уровень 50+</div>
-                </a>
+        <!-- РЯД 2 -->
+        <button class="cyber-btn btn-large" onclick="mainWeapon()">⚡ ОСНОВНОЕ ОРУЖИЕ</button>
+        <button class="cyber-btn" onclick="stealthMode()">🕶️ СТЕЛС-РЕЖИМ</button>
+        <button class="cyber-btn" onclick="energyBoost()">🔋 ЭНЕРГИЯ +200%</button>
+        <div class="display-panel">
+            <h3>📊 СИСТЕМНЫЙ МОНИТОР</h3>
+            <div class="matrix-text">
+                <p>> Загрузка ЦП: 87%</p>
+                <p>> Память: 64%</p>
+                <p>> Сеть: 124 Мбит/с</p>
+                <p>> Безопасность: УРОВЕНЬ 5</p>
+                <p>> Аномалии: 0</p>
             </div>
-        </section>
+        </div>
+        <button class="cyber-btn" onclick="hackPentagon()">🏢 ПЕНТАГОН v2.1</button>
+        <button class="cyber-btn" onclick="quantumCompute()">⚛️ КВАНТОВЫЕ ВЫЧИСЛЕНИЯ</button>
 
-        <!-- ИНФОРМАЦИОННАЯ СВЕРХНОВАЯ -->
-        <section class="galaxy-section">
-            <div class="info-tower">
-                <h2>⚠️ ВАЖНАЯ ИНФОРМАЦИЯ</h2>
-                <p>Это ЕДИНСТВЕННЫЙ официальный адаптер проекта. Все остальные — фейковые клоны.</p>
-                <p>Подписывайтесь непосредственно на канал, а не на переходники!</p>
-            </div>
+        <!-- РЯД 3 -->
+        <button class="cyber-btn" onclick="teleport()">🌀 ТЕЛЕПОРТАЦИЯ</button>
+        <button class="cyber-btn btn-large" onclick="mainSequence()">🎬 ГЛАВНАЯ ПОСЛЕДОВАТЕЛЬНОСТЬ</button>
+        <button class="cyber-btn" onclick="dimensionJump()">🌌 ПРЫЖОК В ИЗМЕРЕНИИ</button>
+        <button class="cyber-btn" onclick="cloneSystem()">👥 КЛОНИРОВАНИЕ СИСТЕМЫ</button>
+        <button class="cyber-btn" onclick="neuralLink()">🧠 НЕЙРО-ИНТЕРФЕЙС</button>
+        <button class="cyber-btn" onclick="gravityControl()">🌍 КОНТРОЛЬ ГРАВИТАЦИИ</button>
 
-            <div class="info-tower">
-                <h2>👑 РУКОВОДСТВО</h2>
-                <p><strong>Владелец:</strong> @userfratov (Дмитрий Стволов)</p>
-                <p><strong>Статус:</strong> Активен ✅</p>
-                <p><strong>Деятельность:</strong> Управление проектом, консультации</p>
-            </div>
-        </section>
-
-        <!-- КОНТАКТНЫЙ КВАЗАР -->
-        <section class="galaxy-section">
-            <h2 style="text-align: center; font-size: 4rem; margin-bottom: 60px;">📡 КОНТАКТЫ</h2>
-            
-            <div class="contact-universe">
-                <div class="contact-black-hole">
-                    <h3>🔗 ОСНОВНОЙ КАНАЛ</h3>
-                    <p>Главные анонсы и новости</p>
-                    <a href="https://t.me/+-UNRwIdYYhM5NjQy" target="_blank" style="color: var(--neon-cyan);">Перейти →</a>
-                </div>
-
-                <div class="contact-black-hole">
-                    <h3>💼 ПРАЙС-ЛИСТ</h3>
-                    <p>Актуальные расценки на услуги</p>
-                    <a href="https://t.me/+S70CEvn7DGRjZTky" target="_blank" style="color: var(--neon-pink);">Открыть →</a>
-                </div>
-
-                <div class="contact-black-hole">
-                    <h3>🎯 ДОПОЛНИТЕЛЬНЫЙ КАНАЛ</h3>
-                    <p>Эксклюзивный контент</p>
-                    <a href="https://t.me/+aV8LEhaVh-tmNzY0" target="_blank" style="color: var(--neon-blue);">Подписаться →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- МЕГА-ФУТЕР -->
-        <footer class="titan-footer">
-            <h3>АДАПТЕР ДМИТРИЯ СТВОЛОВА © 2024</h3>
-            <p>Вселенная проекта "Месиво КМ" | Оставайтесь на связи!</p>
-            <div style="margin-top: 30px;">
-                <span style="color: var(--neon-green);">🛡</span>
-                <span style="color: var(--neon-blue);">⚡</span>
-                <span style="color: var(--neon-pink);">🔮</span>
-                <span style="color: var(--neon-cyan);">🌌</span>
-            </div>
-        </footer>
+        <!-- ДОБАВЛЯЙ ЕЩЁ КНОПКИ ПО ТАКОМУ ЖЕ ШАБЛОНУ -->
     </div>
 
     <script>
-        // МАСШТАБИРУЕМАЯ АНИМАЦИЯ ВСЕЛЕННОЙ
-        document.addEventListener('mousemove', (e) => {
-            const universe = document.querySelector('.universe-bg');
-            const x = (e.clientX / window.innerWidth) * 100;
-            const y = (e.clientY / window.innerHeight) * 100;
-            universe.style.transform = `translate(-${x}%, -${y}%) rotate(${x + y}deg)`;
-        });
+        // БАЗОВАЯ ФУНКЦИОНАЛЬНОСТЬ КНОПОК
+        function activateSystem(level) {
+            playSound('beep');
+            alert(`Система активирована до уровня ${level}`);
+            document.body.style.background = `linear-gradient(45deg, #000, #00${level}0${level}0)`;
+        }
 
-        // СЛУЧАЙНЫЕ ГЛОБАЛЬНЫЕ ГЛИТЧИ
+        function toggleLights() {
+            document.body.classList.toggle('lights-off');
+            playSound('switch');
+        }
+
+        function emergencyStop() {
+            if (confirm('ТОЧНО АКТИВИРОВАТЬ АВАРИЙНУЮ ОСТАНОВКУ?')) {
+                document.body.style.animation = 'emergencyFlash 0.1s infinite';
+                playSound('alarm');
+            }
+        }
+
+        // ДОБАВЬ ЕЩЁ 30+ ФУНКЦИЙ ДЛЯ ОСТАЛЬНЫХ КНОПОК
+
+        // СИСТЕМА ЗВУКОВ
+        function playSound(type) {
+            const sounds = {
+                beep: new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA'),
+                switch: new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQCAAAAA'),
+                alarm: new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQCAAAAA')
+            };
+            if (sounds[type]) sounds[type].play().catch(() => {});
+        }
+
+        // СЛУЧАЙНЫЕ АНИМАЦИИ
         setInterval(() => {
-            document.body.style.filter = `hue-rotate(${Math.random() * 360}deg)`;
-            setTimeout(() => {
-                document.body.style.filter = 'none';
-            }, 100);
-        }, 5000);
-
-        // АНИМАЦИЯ ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ ПРИ ПРОКРУТКЕ
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        });
-
-        document.querySelectorAll('.galaxy-section').forEach(section => {
-            section.style.animationPlayState = 'paused';
-            observer.observe(section);
-        });
+            const randomBtn = document.querySelectorAll('.cyber-btn')[Math.floor(Math.random()*30)];
+            randomBtn.style.animation = 'glitchEffect 0.3s';
+            setTimeout(() => randomBtn.style.animation = '', 300);
+        }, 2000);
     </script>
 </body>
-</html>
+            </html>
