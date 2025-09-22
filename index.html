@@ -2,180 +2,133 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>ПАНЕЛЬ УПРАВЛЕНИЯ АДАПТЕРОМ | СУПЕР-ИНТЕРФЕЙС</title>
+    <title>АДАПТЕР ДМИТРИЯ СТВОЛОВА</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* ОСНОВА */
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             background: #000;
             color: #00ff41;
             font-family: 'Courier New', monospace;
-            overflow: hidden;
+            line-height: 1.4;
+            padding: 20px;
+            min-height: 100vh;
         }
 
-        /* КОСМИЧЕСКАЯ ПАНЕЛЬ */
-        .control-panel {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            grid-template-rows: repeat(8, 1fr);
-            gap: 15px;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #00ff41;
             padding: 30px;
-            height: 100vh;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
-                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 65, 0.03) 2px, rgba(0, 255, 65, 0.03) 4px);
-        }
-
-        /* СТИЛИ КНОПОК */
-        .cyber-btn {
-            background: linear-gradient(145deg, #001a00, #000);
-            border: 2px solid #00ff41;
-            border-radius: 8px;
-            color: #00ff41;
-            padding: 15px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s;
             position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
         }
 
-        .cyber-btn:hover {
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .link-grid {
+            display: grid;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .link-card {
+            background: rgba(0, 255, 65, 0.05);
+            border: 1px solid #00ff41;
+            padding: 20px;
+            text-decoration: none;
+            color: #00ff41;
+            transition: all 0.3s;
+        }
+
+        .link-card:hover {
             background: #00ff41;
             color: #000;
-            transform: scale(1.1);
-            box-shadow: 0 0 30px #00ff41;
-            animation: btnPulse 0.5s infinite;
         }
 
-        @keyframes btnPulse {
-            0%, 100% { box-shadow: 0 0 30px #00ff41; }
-            50% { box-shadow: 0 0 50px #00ff41, 0 0 70px #00ff41; }
+        .info-block {
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 3px solid #00ff41;
         }
 
-        /* ОСОБЫЕ КНОПКИ */
-        .btn-large {
-            grid-column: span 2;
-            grid-row: span 2;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
+        .stats {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
         }
 
-        .btn-danger {
-            border-color: #ff0066;
-            box-shadow: 0 0 15px rgba(255, 0, 102, 0.5);
-        }
-
-        .btn-danger:hover {
-            background: #ff0066;
-            box-shadow: 0 0 40px #ff0066;
-        }
-
-        /* ИНФО-ПАНЕЛИ */
-        .display-panel {
-            grid-column: span 4;
-            grid-row: span 3;
-            border: 3px solid #00ff41;
-            padding: 20px;
-            background: rgba(0, 20, 0, 0.8);
-            overflow-y: auto;
-        }
-
-        /* АНИМАЦИЯ ТЕКСТА */
-        .matrix-text {
-            animation: textScroll 10s linear infinite;
-        }
-
-        @keyframes textScroll {
-            0% { transform: translateY(100%); }
-            100% { transform: translateY(-100%); }
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="control-panel">
-        <!-- РЯД 1 -->
-        <button class="cyber-btn" onclick="activateSystem(1)">🎛️ СИСТЕМА ONLINE</button>
-        <button class="cyber-btn" onclick="toggleLights()">💡 ОСВЕЩЕНИЕ</button>
-        <button class="cyber-btn btn-danger" onclick="emergencyStop()">🚨 СТОП</button>
-        <button class="cyber-btn" onclick="scanNetwork()">📡 СКАН СЕТИ</button>
-        <button class="cyber-btn" onclick="encryptData()">🔒 ШИФРОВАНИЕ</button>
-        <button class="cyber-btn" onclick="deployVirus()">🦠 ВИРУС v1.0</button>
-        <button class="cyber-btn" onclick="boostSignal()">📶 БУСТ СИГНАЛА</button>
-        <button class="cyber-btn" onclick="activateAI()">🤖 ИИ АКТИВАЦИЯ</button>
-        <button class="cyber-btn" onclick="timeWarp()">⏰ ИСКАЖЕНИЕ ВРЕМЕНИ</button>
-        <button class="cyber-btn btn-danger" onclick="selfDestruct()">💥 САМОЛИКВИДАЦИЯ</button>
+    <div class="container">
+        <h1>АДАПТЕР ДМИТРИЯ СТВОЛОВА</h1>
 
-        <!-- РЯД 2 -->
-        <button class="cyber-btn btn-large" onclick="mainWeapon()">⚡ ОСНОВНОЕ ОРУЖИЕ</button>
-        <button class="cyber-btn" onclick="stealthMode()">🕶️ СТЕЛС-РЕЖИМ</button>
-        <button class="cyber-btn" onclick="energyBoost()">🔋 ЭНЕРГИЯ +200%</button>
-        <div class="display-panel">
-            <h3>📊 СИСТЕМНЫЙ МОНИТОР</h3>
-            <div class="matrix-text">
-                <p>> Загрузка ЦП: 87%</p>
-                <p>> Память: 64%</p>
-                <p>> Сеть: 124 Мбит/с</p>
-                <p>> Безопасность: УРОВЕНЬ 5</p>
-                <p>> Аномалии: 0</p>
-            </div>
+        <div class="info-block">
+            <p>⚡ Официальный переходник проекта «Месиво КМ»</p>
         </div>
-        <button class="cyber-btn" onclick="hackPentagon()">🏢 ПЕНТАГОН v2.1</button>
-        <button class="cyber-btn" onclick="quantumCompute()">⚛️ КВАНТОВЫЕ ВЫЧИСЛЕНИЯ</button>
 
-        <!-- РЯД 3 -->
-        <button class="cyber-btn" onclick="teleport()">🌀 ТЕЛЕПОРТАЦИЯ</button>
-        <button class="cyber-btn btn-large" onclick="mainSequence()">🎬 ГЛАВНАЯ ПОСЛЕДОВАТЕЛЬНОСТЬ</button>
-        <button class="cyber-btn" onclick="dimensionJump()">🌌 ПРЫЖОК В ИЗМЕРЕНИИ</button>
-        <button class="cyber-btn" onclick="cloneSystem()">👥 КЛОНИРОВАНИЕ СИСТЕМЫ</button>
-        <button class="cyber-btn" onclick="neuralLink()">🧠 НЕЙРО-ИНТЕРФЕЙС</button>
-        <button class="cyber-btn" onclick="gravityControl()">🌍 КОНТРОЛЬ ГРАВИТАЦИИ</button>
+        <div class="link-grid">
+            <a href="https://t.me/+-UNRwIdYYhM5NjQy" target="_blank" class="link-card">
+                <strong>[🖥] Ссылка на канал</strong>
+                <div class="stats">👥 50 подписчиков</div>
+            </a>
+            
+            <a href="https://t.me/+XZC7HWNPqRxjYTgy" target="_blank" class="link-card">
+                <strong>[✉️] Ссылка на обсуждение</strong>
+                <div class="stats">👥 40 участников</div>
+            </a>
+            
+            <a href="https://t.me/boost?c=2609564382" target="_blank" class="link-card">
+                <strong>[📊] Ссылка на буст канала</strong>
+                <div class="stats">⭐ Уровень: 0</div>
+            </a>
+        </div>
 
-        <!-- ДОБАВЛЯЙ ЕЩЁ КНОПКИ ПО ТАКОМУ ЖЕ ШАБЛОНУ -->
+        <div class="info-block">
+            <p>🚫 <strong>Не подписывайтесь на переходник</strong>, подписывайтесь на сам канал по ссылке выше! 🔼</p>
+        </div>
+
+        <div class="info-block">
+            <p>👤 <strong>Владелец проекта</strong> — @userfratov</p>
+            <p>По всем вопросам – к нему. Хорошего дня! Оставайтесь белыми и чистыми с нами! 🛡</p>
+        </div>
+
+        <div class="info-block">
+            <p>💼 <strong>Сменил нейм с фратов на дмитрий стволов</strong>, будьте внимательнее</p>
+        </div>
+
+        <a href="https://t.me/+S70CEvn7DGRjZTky" target="_blank" class="link-card">
+            <strong>[💰] Мой новый прайс</strong>
+            <p>Актуальные цены на услуги</p>
+        </a>
+
+        <div class="info-block">
+            <p>🎯 <strong>Теперь я админ еще одного тгк, а именно:</strong></p>
+            <a href="https://t.me/+aV8LEhaVh-tmNzY0" target="_blank" class="link-card">
+                <strong>[🔗] Новый телеграм-канал</strong>
+                <p>Буду постить контент теперь и там</p>
+            </a>
+        </div>
     </div>
-
-    <script>
-        // БАЗОВАЯ ФУНКЦИОНАЛЬНОСТЬ КНОПОК
-        function activateSystem(level) {
-            playSound('beep');
-            alert(`Система активирована до уровня ${level}`);
-            document.body.style.background = `linear-gradient(45deg, #000, #00${level}0${level}0)`;
-        }
-
-        function toggleLights() {
-            document.body.classList.toggle('lights-off');
-            playSound('switch');
-        }
-
-        function emergencyStop() {
-            if (confirm('ТОЧНО АКТИВИРОВАТЬ АВАРИЙНУЮ ОСТАНОВКУ?')) {
-                document.body.style.animation = 'emergencyFlash 0.1s infinite';
-                playSound('alarm');
-            }
-        }
-
-        // ДОБАВЬ ЕЩЁ 30+ ФУНКЦИЙ ДЛЯ ОСТАЛЬНЫХ КНОПОК
-
-        // СИСТЕМА ЗВУКОВ
-        function playSound(type) {
-            const sounds = {
-                beep: new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA'),
-                switch: new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQCAAAAA'),
-                alarm: new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQCAAAAA')
-            };
-            if (sounds[type]) sounds[type].play().catch(() => {});
-        }
-
-        // СЛУЧАЙНЫЕ АНИМАЦИИ
-        setInterval(() => {
-            const randomBtn = document.querySelectorAll('.cyber-btn')[Math.floor(Math.random()*30)];
-            randomBtn.style.animation = 'glitchEffect 0.3s';
-            setTimeout(() => randomBtn.style.animation = '', 300);
-        }, 2000);
-    </script>
 </body>
-            </html>
+</html> 
